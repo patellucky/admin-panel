@@ -1,0 +1,148 @@
+<%- include('../partials/header') %>
+
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+      <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+          <h4 class="page-title">Edit Admin Details</h4>
+          <div class="ms-auto text-end">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  edit admin
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <div class="row">
+        <div class="col-md-8 ">
+          <div class="card">
+            <form class="form-horizontal" method="post" action="/edit_admin/<%= data.id%>" enctype="multipart/form-data">
+              <div class="card-body">
+                <h4 class="card-title">Edit Admin Info</h4>
+                <% let adminData=data.name.split(" ")
+                  // console.log(adminData);
+                %>
+                <div class=" form-group row">
+                  <label for="fname" class="col-sm-3 text-end control-label col-form-label">First Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="fname" name="fname" value="<%= adminData[0] %>"
+                      placeholder="First Name Here" />
+                  </div>
+              </div>
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Last Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="lname" name="lname" value="<%= adminData[1] %>"
+                    placeholder="Last Name Here" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="pasword" class="col-sm-3 text-end control-label col-form-label">Password</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="password" name="password" value="<%= data.password %>"
+                    placeholder="Password Here" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="email" class="col-sm-3 text-end control-label col-form-label">Email Address</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="email" name="email" value="<%= data.email %>"
+                    placeholder="Email Here" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="gender" class="col-sm-3 text-end control-label col-form-label">Gender</label>
+                <div class="col-sm-9">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="male" name="gender" value="male" <% if
+                      (data.gender=='male' ) { %> checked <% } %>
+                      />
+                      <label class="form-check-label mb-0" for="male">Male</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="female" name="gender" value="female" <% if
+                      (data.gender=='female' ) { %> checked <% } %>
+                      />
+                      <label class="form-check-label mb-0" for="female">Female</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lname" class="col-sm-3 text-end control-label col-form-label">Hobby</label>
+                <div class="col-sm-9">
+                  <div class="form-check mr-sm-2">
+                    <input type="checkbox" class="form-check-input" id="customControlAutosizing1" name="hobby"
+                      value="dance" <% if(data.hobby.includes("dance")) {%>checked<%}%>
+                      />
+                      <label class="form-check-label mb-0" for="customControlAutosizing1">Dance</label>
+                  </div>
+                  <div class="form-check mr-sm-2">
+                    <input type="checkbox" class="form-check-input" id="customControlAutosizing2" name="hobby"
+                      value="music" <% if(data.hobby.includes("music")) {%>checked<%}%>
+                      />
+                      <label class="form-check-label mb-0" for="customControlAutosizing2">Music</label>
+                  </div>
+                  <div class="form-check mr-sm-2">
+                    <input type="checkbox" class="form-check-input" id="customControlAutosizing3" name="hobby"
+                      value="travel" <% if(data.hobby.includes("travel")) {%>checked<%}%>
+                      />
+                      <label class="form-check-label mb-0" for="customControlAutosizing3">travel</label>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group row">
+
+            <div class="text-end pe-4">
+               <img src="../<%= data.image %>" alt="<%= data.name %>" width="75">
+               <input type="hidden" value="<%= data.image %>" name="oldImage"/>
+            </div>
+
+            <label for="image" class="col-sm-3 text-end control-label col-form-label">Image</label>
+            <div class="col-sm-9">
+              <input type="file" class="custom-file-input" id="image" name="image" />
+            </div>
+          </div>
+        </div>
+        <div class="border-top">
+          <div class="card-body text-center">
+            <button type="submit" class="btn btn-primary text-center">
+              Submit
+            </button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+  </div>
+  </div>
+
+  <%- include('../partials/footer') %>
